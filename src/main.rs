@@ -16,12 +16,12 @@ use fmt::info;
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
     let p = embassy_stm32::init(Default::default());
-    let mut led = Output::new(p.PB7, Level::High, Speed::Low);
+    let mut led = Output::new(p.PC13, Level::High, Speed::Low);
 
     loop {
-        info!("Hello, World!");
+        info!("What is happening here!");
         led.set_high();
-        Timer::after(Duration::from_millis(2000)).await;
+        Timer::after(Duration::from_millis(500)).await;
         led.set_low();
         Timer::after(Duration::from_millis(500)).await;
     }
